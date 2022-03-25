@@ -5,6 +5,7 @@ from backend.settings import SESSION_COOKIE_AGE
 import datetime
 
 from users.api import router as user_router
+from projects.api import router as projects_router
 
 
 class InvalidToken(Exception):
@@ -44,7 +45,7 @@ api = NinjaAPI(auth=GlobalAuth)
 
 
 @api.exception_handler(InvalidToken)
-def on_invaild_tokne(request, exc):
+def on_invaild_tokne(request):
     """
     无效token返回类型
     """
@@ -52,7 +53,7 @@ def on_invaild_tokne(request, exc):
 
 
 @api.exception_handler(OverdueToken)
-def on_overdue_tokne(request, exc):
+def on_overdue_tokne(request):
     """
     过期的token返回类型
     """
@@ -60,3 +61,4 @@ def on_overdue_tokne(request, exc):
 
 
 api.add_router("/users", user_router)
+api.add_router("/projects", projects_router)
