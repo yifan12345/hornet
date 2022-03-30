@@ -27,22 +27,12 @@ def create_project(request, data: ProjectIn):
     return response()
 
 
-@router.get("/list", auth=None)
-@paginate(CustomPagination, page_size=6)
+@router.get("/list", auth=None,response=List[ProjectOut])
+@paginate(CustomPagination)
 def get_project_list(request, **kwargs):
     """获取项目列表"""
-    data = [
-        {
-            "id": p.id,
-            "name": p.name,
-            "describe": p.describe,
-            "image": p.image,
-            "create_time": p.create_time
-        }
-        for p in Project.objects.filter(is_delete=False).all()
-    ]
 
-    return data
+    return Project.objects.filter(is_delete=False).all()
 
 
 @router.get("/{project_id}/", auth=None)
@@ -58,7 +48,7 @@ def get_project_details(request, project_id: int):
         "image": project.image,
         "create_time": project.create_time
     }
-    return response(result=data)
+    return response(item=data)
 
 
 @router.put("/{project_id}/", auth=None)
@@ -90,7 +80,7 @@ def project_image_upload(request, file: UploadedFile = File(...)):
     """
     # 判断文件后缀名
     suffix = file.name.split(".")[-1]
-    if suffix not in ["png", "jpg", "jpeg"]:
+    if suffix not in ["png", "jpg", "jpeg","gif"]:
         return response(error=Error.FILE_TYPE_ERROR)
 
     # 判断文件大小 1024 * 1024 * 2 = 2MB
@@ -107,4 +97,4 @@ def project_image_upload(request, file: UploadedFile = File(...)):
         for chunk in file.chunks():
             f.write(chunk)
 
-    return response(result={"name": file_name})
+    return response(item={"name": file_name})
