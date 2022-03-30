@@ -6,6 +6,7 @@ import datetime
 
 from users.api import router as user_router
 from projects.api import router as projects_router
+from cases.api import router as cases_router
 
 
 class InvalidToken(Exception):
@@ -62,3 +63,4 @@ def on_overdue_tokne(request):
 
 api.add_router("/users", user_router)
 api.add_router("/projects", projects_router)
+api.add_router("/cases", cases_router)
