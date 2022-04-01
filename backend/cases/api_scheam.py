@@ -2,6 +2,10 @@ from typing import Any
 from ninja import Schema
 
 
+class ProjectIn(Schema):
+    project_id : int
+
+
 class ModuleIn(Schema):
     """项目入参"""
     name: str
