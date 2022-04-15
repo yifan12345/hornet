@@ -29,9 +29,33 @@ class CaseIn(Schema):
     module_id:int
     url:str
     method:str
-    header:str
+    header:dict
     params_type:str
-    params_body:str
+    params_body:dict
     response:str
     assert_type:str
     assert_text:str
+
+
+class CaseDebugIn(Schema):
+    url:str
+    method:str
+    header:dict
+    params_type:str
+    params_body:dict
+
+
+class CaseAssertIn(Schema):
+    response:str
+    assert_type:str
+    assert_text:str
+
+
+class CaseOut(Schema):
+    name:str
+    module_id:int
+    url:str
+    method:str
+    create_time:Any
+    update_time:Any
+

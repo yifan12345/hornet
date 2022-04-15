@@ -30,7 +30,7 @@ class TestCase(models.Model):
     response = models.TextField("结果",null=True,default="{}")
     assert_type = models.CharField("断言类型",max_length=10,null=True)
     assert_text = models.TextField("断言结果",null=True,default="{}")
-    is_Delete = models.BooleanField("状态",default=False)
+    is_delete = models.BooleanField("状态",default=False)
     create_time = models.DateField("创建时间",auto_now_add=True)
     update_time = models.DateField("更新时间",auto_now=True)
 

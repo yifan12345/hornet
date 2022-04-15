@@ -20,6 +20,12 @@ class Error:
     MODULE_NOT_EDIT = {"10044": "更新失败，不能更改自己子节点的节点"}
     MODULE_PITCH_EXIST = {"10045":"节点数据错误，请查看"}
 
+    CASE_MODULE_ERROR = {"10051":"请求方法错误"}
+    CASE_HEADER_ERROR = {"10052":"请求header错误"}
+    CASE_PARAMS_ERROR = {"10053":"请求参数类型错误"}
+    CASE_ASSERT_TYPE_ISNONE = {"10054":"不存在的断言类型"}
+    CASE_ALREADY_DELETE = {"10055":"case已被删除"}
+
 
 def response(success: bool = True, error=None, item=None) -> dict:
     """
