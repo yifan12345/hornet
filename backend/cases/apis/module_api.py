@@ -1,19 +1,15 @@
 from ninja import Router, Query
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
-from typing import List
-from ninja.pagination import paginate, LimitOffsetPagination, PageNumberPagination
 from backend.common import response, Error
-from backend.pagination import CustomPagination
 from cases.models import Module
 from projects.models import Project
-from cases.api_scheam import ModuleIn, ProjectIn
-from cases.api_scheam import ModuleOut
+from cases.apis.api_scheam import ModuleIn, ProjectIn
 
-router = Router(tags=["cases"])
+router = Router(tags=["module"])
 
 
-@router.post("/module", auth=None)
+@router.post("/", auth=None)
 def create_module(request, data: ModuleIn):
     """创建模块"""
     project = Project.objects.filter(id=data.project_id)
@@ -25,6 +21,15 @@ def create_module(request, data: ModuleIn):
     module = Module.objects.create(**data.dict())
     return response(item=model_to_dict(module))
 
+
+@router.delete("/{module_id}/", auth=None)
+def get_module_delete(request, module_id: int):
+    """删除模块"""
+    module = get_object_or_404(Module, id=module_id)
+    module.is_delete = True
+    module.save()
+
+    return response()
 
 def node_tree(nodes, current_node):
     """递归，获取子节点"""
@@ -47,7 +52,7 @@ def child_node(nodes, current_node):
     return False
 
 
-@router.get("/module/tree", auth=None)
+@router.get("/tree", auth=None)
 def get_module_tree(request, filters: ProjectIn = Query(...)):
     """
     获取模块树
@@ -77,9 +82,12 @@ def get_module_tree(request, filters: ProjectIn = Query(...)):
             # 达成条件则直接填充到data列表中
             data.append(n)
         elif (n["parent_id"] == 0) and (is_child is True):
+            # 如果-parent_id！=0，并且id_child is True,会跳出判断，查询不出来数据了
             # 判断当前选中节点是否是根节点，并且存在子节点
             # 调用递归方法形成树结构，并追加到列表
             ret = node_tree(data_node, n)
             data.append(ret)
-
+        # else:
+            # data.append({"error:":"错误节点："+n})
+            # return response(error=Error.MODULE_PITCH_EXIST,item={"请检查节点：":n})
     return response(item=data)
