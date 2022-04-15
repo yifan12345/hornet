@@ -1,16 +1,13 @@
 import json
-from typing import List
-
 import requests
+from typing import List
 from ninja import Router, Query
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
 from ninja.pagination import paginate
-
 from backend.common import response, Error
 from backend.pagination import CustomPagination
 from cases.models import Module,TestCase
-from projects.models import Project
 from cases.apis.api_scheam import CaseIn, CaseDebugIn, CaseAssertIn, CaseOut
 
 router = Router(tags=["cases"])
@@ -51,13 +48,13 @@ def get_case_delete(request, case_id: int):
 @router.get("/list", auth=None,response=List[CaseOut])
 @paginate(CustomPagination)
 def get_case_list(request, **kwargs):
-    """获取项目列表"""
+    """获取用例列表"""
 
     return TestCase.objects.filter(is_delete=False).all()
 
 
 @router.get("/{case_id}/", auth=None)
-def get_project_details(request, case_id: int):
+def get_case_details(request, case_id: int):
     """获取单个的用例详情"""
     case = get_object_or_404(TestCase, id=case_id)
     if case.is_delete is True:
@@ -77,21 +74,6 @@ def get_project_details(request, case_id: int):
     }
     return response(item=data)
 
-
-@router.get("/{project_id}/", auth=None)
-def get_project_details(request, project_id: int):
-    """获取单个的项目详情"""
-    project = get_object_or_404(Project, id=project_id)
-    if project.is_delete is True:
-        return response(error=Error.PROJECT_ALREADY_DELETE)
-    data = {
-        "id": project.id,
-        "name": project.name,
-        "describe": project.describe,
-        "image": project.image,
-        "create_time": project.create_time
-    }
-    return response(item=data)
 
 
 @router.post("/debug", auth=None)
