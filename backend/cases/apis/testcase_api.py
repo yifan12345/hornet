@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 from ninja.pagination import paginate
 from backend.common import response, Error
 from backend.pagination import CustomPagination
-from cases.models import Module,TestCase
+from cases.models import Module, TestCase
 from cases.apis.api_scheam import CaseIn, CaseDebugIn, CaseAssertIn, CaseOut
 
 router = Router(tags=["cases"])
@@ -25,14 +25,15 @@ def create_case(request, data: CaseIn):
 
 
 @router.put("/{case_id}/", auth=None)
-def get_case_update(request, case_id: int,payload:CaseIn):
+def get_case_update(request, case_id: int, payload: CaseIn):
     """更新用例"""
-    case = get_object_or_404(TestCase,id=case_id)
-    for attr,value in payload.dict().items():
-        setattr(case,attr,value)
+    case = get_object_or_404(TestCase, id=case_id)
+    for attr, value in payload.dict().items():
+        setattr(case, attr, value)
         case.save()
 
     return response()
+
 
 @router.delete("/{case_id}/", auth=None)
 def get_case_delete(request, case_id: int):
@@ -45,12 +46,12 @@ def get_case_delete(request, case_id: int):
 
 
 # 未完成
-@router.get("/list", auth=None,response=List[CaseOut])
+@router.get("/{module_id}/cases", auth=None, response=List[CaseOut])
 @paginate(CustomPagination)
-def get_case_list(request, **kwargs):
+def get_case_list(request, module_id: int, **kwargs):
     """获取用例列表"""
 
-    return TestCase.objects.filter(is_delete=False).all()
+    return TestCase.objects.filter(module_id=module_id, is_delete=False).all()
 
 
 @router.get("/{case_id}/", auth=None)
@@ -60,7 +61,7 @@ def get_case_details(request, case_id: int):
     if case.is_delete is True:
         return response(error=Error.CASE_ALREADY_DELETE)
     data = {
-        "id":case.id,
+        "id": case.id,
         "name": case.name,
         "module_id": case.module_id,
         "url": case.url,
@@ -75,7 +76,6 @@ def get_case_details(request, case_id: int):
     return response(item=data)
 
 
-
 @router.post("/debug", auth=None)
 def debug_case(request, data: CaseDebugIn):
     """用例调试，发送请求"""
@@ -86,13 +86,13 @@ def debug_case(request, data: CaseDebugIn):
     params_body = data.params_body
 
     resp = ""
-    if method not in ["get","post","put","delete"]:
+    if method not in ["get", "post", "put", "delete"]:
         return response(error=Error.CASE_MODULE_ERROR)
-    if params_type not in ["params","form","json"]:
+    if params_type not in ["params", "form", "json"]:
         return response(error=Error.CASE_PARAMS_ERROR)
 
-    if method== "get":
-        resp = requests.get(url,headers=header,params=params_body).text
+    if method == "get":
+        resp = requests.get(url, headers=header, params=params_body).text
 
     if method == "post":
         if params_type == "form":
@@ -118,10 +118,10 @@ def debug_case(request, data: CaseDebugIn):
         else:
             return response(error=Error.CASE_PARAMS_ERROR)
 
-
     print(resp)
-    #case = TestCase.objects.create(**data.dict())
-    return response(item={"response":resp})
+    # case = TestCase.objects.create(**data.dict())
+    return response(item={"response": resp})
+
 
 @router.post("/assert", auth=None)
 def assert_case(request, data: CaseAssertIn):
@@ -129,7 +129,7 @@ def assert_case(request, data: CaseAssertIn):
     resp = data.response
     assert_type = data.assert_type
     assert_text = data.assert_text
-    if assert_type not in ["include","equal"]:
+    if assert_type not in ["include", "equal"]:
         return response(error=Error.CASE_ASSERT_TYPE_ISNONE)
     if assert_type == "include":
         if assert_text in resp:
