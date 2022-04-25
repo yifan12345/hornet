@@ -1,10 +1,14 @@
+from typing import List
+from backend.pagination import CustomPagination
 from ninja import Router, Query
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
+from ninja.pagination import paginate
+from cases.models import TestCase
 from backend.common import response, Error
 from cases.models import Module
 from projects.models import Project
-from cases.apis.api_scheam import ModuleIn, ProjectIn
+from cases.apis.api_scheam import ModuleIn, ProjectIn,CaseOut
 
 router = Router(tags=["module"])
 
@@ -91,3 +95,12 @@ def get_module_tree(request, filters: ProjectIn = Query(...)):
             # data.append({"error:":"错误节点："+n})
             # return response(error=Error.MODULE_PITCH_EXIST,item={"请检查节点：":n})
     return response(item=data)
+
+
+
+@router.get("/{module_id}/cases", auth=None, response=List[CaseOut])
+@paginate(CustomPagination)
+def get_case_list(request, module_id: int, **kwargs):
+    """获取用例列表"""
+
+    return TestCase.objects.filter(module_id=module_id, is_delete=False).all()

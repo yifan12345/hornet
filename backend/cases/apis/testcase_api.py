@@ -1,14 +1,10 @@
-import json
 import requests
-from typing import List
-from ninja import Router, Query
+from ninja import Router
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
-from ninja.pagination import paginate
 from backend.common import response, Error
-from backend.pagination import CustomPagination
 from cases.models import Module, TestCase
-from cases.apis.api_scheam import CaseIn, CaseDebugIn, CaseAssertIn, CaseOut
+from cases.apis.api_scheam import CaseIn, CaseDebugIn, CaseAssertIn,CaseOut
 
 router = Router(tags=["cases"])
 
@@ -45,15 +41,6 @@ def get_case_delete(request, case_id: int):
     return response()
 
 
-# 未完成
-@router.get("/{module_id}/cases", auth=None, response=List[CaseOut])
-@paginate(CustomPagination)
-def get_case_list(request, module_id: int, **kwargs):
-    """获取用例列表"""
-
-    return TestCase.objects.filter(module_id=module_id, is_delete=False).all()
-
-
 @router.get("/{case_id}/", auth=None)
 def get_case_details(request, case_id: int):
     """获取单个的用例详情"""
@@ -78,7 +65,10 @@ def get_case_details(request, case_id: int):
 
 @router.post("/debug", auth=None)
 def debug_case(request, data: CaseDebugIn):
-    """用例调试，发送请求"""
+    """
+    用例调试
+    auth=None 该接口不需要认证
+    """
     url = data.url
     method = data.method
     header = data.header
@@ -86,11 +76,6 @@ def debug_case(request, data: CaseDebugIn):
     params_body = data.params_body
 
     resp = ""
-    if method not in ["get", "post", "put", "delete"]:
-        return response(error=Error.CASE_MODULE_ERROR)
-    if params_type not in ["params", "form", "json"]:
-        return response(error=Error.CASE_PARAMS_ERROR)
-
     if method == "get":
         resp = requests.get(url, headers=header, params=params_body).text
 
@@ -118,8 +103,6 @@ def debug_case(request, data: CaseDebugIn):
         else:
             return response(error=Error.CASE_PARAMS_ERROR)
 
-    print(resp)
-    # case = TestCase.objects.create(**data.dict())
     return response(item={"response": resp})
 
 

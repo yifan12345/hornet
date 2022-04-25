@@ -6,7 +6,7 @@ from users.api import router as user_router
 from projects.api import router as projects_router
 from cases.apis.module_api import router as module_router
 from cases.apis.testcase_api import router as case_router
-
+from tasks.api import router as tasks_router
 class InvalidToken(Exception):
     """
     无效token
@@ -63,3 +63,5 @@ api.add_router("/users/", user_router)
 api.add_router("/projects/", projects_router)
 api.add_router("/modules/", module_router)
 api.add_router("/cases/", case_router)
+api.add_router("/tasks/", tasks_router)
+
