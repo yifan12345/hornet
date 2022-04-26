@@ -112,8 +112,6 @@ def assert_case(request, data: CaseAssertIn):
     resp = data.response
     assert_type = data.assert_type
     assert_text = data.assert_text
-    if assert_type not in ["include", "equal"]:
-        return response(error=Error.CASE_ASSERT_TYPE_ISNONE)
     if assert_type == "include":
         if assert_text in resp:
             return response()
