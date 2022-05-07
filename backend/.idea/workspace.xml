@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61347fab-892e-4b0e-90b1-82a40559878a" name="Default Changelist" comment="">
+    <list default="true" id="61347fab-892e-4b0e-90b1-82a40559878a" name="Default Changelist" comment="更新模块树">
+      <change afterPath="$PROJECT_DIR$/tasks/apis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tasks/apis/report_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tasks/apis/task_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tasks/task_running/task_running.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/api.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/api_scheam.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/apis/api_scheam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/task_running/test_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/task_running/test_data.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +54,12 @@
     </expand>
     <select />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="backend" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -54,6 +69,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="26mLT7m2X4f6UZsinezUREAV7RX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -63,19 +79,72 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/projects" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tasks/apis" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git\hornet\backend\tasks\apis" />
+      <recent name="D:\git\hornet\backend\cases\apis" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git\hornet\backend\tasks\apis" />
+      <recent name="D:\git\hornet\backend\tasks\task_running" />
+      <recent name="D:\git\hornet\backend\tasks" />
+      <recent name="D:\git\hornet\backend\cases\apis" />
       <recent name="D:\git\hornet\backend\projects" />
-      <recent name="D:\git\hornet\backend\users" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.backend">
+    <configuration name="tests (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cases/tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tests (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tasks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tasks/tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="tests" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,6 +167,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tests2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tasks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tasks/tests2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="backend" type="Python.DjangoServer" factoryName="Django server">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,7 +197,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="backend.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Python3\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -115,15 +206,42 @@
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
       <option name="runTestServer" value="false" />
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in test_case.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/case_running_demo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/case_running_demo/test_case.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.backend" />
+      <item itemvalue="Python.tests" />
+      <item itemvalue="Python.tests (1)" />
+      <item itemvalue="Python.tests (2)" />
+      <item itemvalue="Python.tests2" />
+      <item itemvalue="Python tests.Unittests in test_case.py" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests in test_case.py" />
+        <item itemvalue="Python.tests2" />
+        <item itemvalue="Python.tests (2)" />
+        <item itemvalue="Python.tests (1)" />
         <item itemvalue="Python.tests" />
       </list>
     </recent_temporary>
@@ -143,6 +261,17 @@
       <workItem from="1648169643491" duration="10562000" />
       <workItem from="1648186624922" duration="9896000" />
       <workItem from="1648196659136" duration="6016000" />
+      <workItem from="1648539552980" duration="7165000" />
+      <workItem from="1648620761550" duration="27548000" />
+      <workItem from="1648800262457" duration="21405000" />
+      <workItem from="1649211359702" duration="6652000" />
+      <workItem from="1649644072984" duration="3972000" />
+      <workItem from="1649836376475" duration="3574000" />
+      <workItem from="1649923656118" duration="667000" />
+      <workItem from="1649927227022" duration="16917000" />
+      <workItem from="1650245641162" duration="62568000" />
+      <workItem from="1651714960950" duration="3502000" />
+      <workItem from="1651891715481" duration="17662000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1648114507846</created>
@@ -158,7 +287,70 @@
       <option name="project" value="LOCAL" />
       <updated>1648202250996</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更新ninja17版本的分页功能&#10;上传文件接口的解析">
+      <created>1648620845663</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1648620845663</updated>
+    </task>
+    <task id="LOCAL-00004" summary="更新模块接口新增">
+      <created>1648634675268</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1648634675268</updated>
+    </task>
+    <task id="LOCAL-00005" summary="更新模块树">
+      <created>1648783704944</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1648783704944</updated>
+    </task>
+    <task id="LOCAL-00006" summary="更新用例新增接口">
+      <created>1649990892856</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649990892856</updated>
+    </task>
+    <task id="LOCAL-00007" summary="更新用例模块接口">
+      <created>1650015720773</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650015720773</updated>
+    </task>
+    <task id="LOCAL-00008" summary="修复">
+      <created>1650018488312</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650018488312</updated>
+    </task>
+    <task id="LOCAL-00009" summary="更新case">
+      <created>1650443282785</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650443282785</updated>
+    </task>
+    <task id="LOCAL-00010" summary="1、新建任务功能，已完成1/3&#10;2、查询用例列表的优化">
+      <created>1650880856441</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650880856441</updated>
+    </task>
+    <task id="LOCAL-00011" summary="任务执行2.0">
+      <created>1650967038921</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650967038922</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,54 +359,143 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="111" />
     <MESSAGE value="更新项目模块接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新项目模块接口" />
+    <MESSAGE value="更新ninja17版本的分页功能&#10;上传文件接口的解析" />
+    <MESSAGE value="更新模块接口新增" />
+    <MESSAGE value="更新模块树" />
+    <MESSAGE value="更新用例新增接口" />
+    <MESSAGE value="更新用例模块接口" />
+    <MESSAGE value="修复" />
+    <MESSAGE value="更新case" />
+    <MESSAGE value="1、新建任务功能，已完成1/3&#10;2、查询用例列表的优化" />
+    <MESSAGE value="任务执行2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="任务执行2.0" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1648102830080">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2371" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1651903116813">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="74" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648102830080" />
-    <state x="2394" y="11" key="CommitChangelistDialog2" timestamp="1648202250098">
+    <state x="2371" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903116813" />
+    <state x="2618" y="328" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1651904172907">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="379" y="9" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648114507074" />
-    <state x="2394" y="11" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648202250098" />
-    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1648102826691">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2618" y="328" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651904172907" />
+    <state x="2628" y="387" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1650941299399">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2628" y="387" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1650941299399" />
+    <state x="2394" y="11" key="CommitChangelistDialog2" timestamp="1651902858149">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="379" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648634674496" />
+    <state x="2394" y="11" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648893928551" />
+    <state x="474" y="11" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1649990891882" />
+    <state x="2394" y="11" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651902858149" />
+    <state x="474" y="11" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1650018487380" />
+    <state x="686" y="215" key="FileChooserDialogImpl" timestamp="1651892550496">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648102826691" />
-    <state width="1877" height="213" key="GridCell.Tab.0.bottom" timestamp="1648202133920">
+    <state x="686" y="215" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1651892550496" />
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom" timestamp="1651916277689">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648202133920" />
-    <state width="1877" height="213" key="GridCell.Tab.0.center" timestamp="1648202133920">
+    <state width="1373" height="181" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1649324778310" />
+    <state width="1877" height="85" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648893929920" />
+    <state width="1877" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1649991717186" />
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651916277689" />
+    <state width="1877" height="172" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
+    <state width="1877" height="261" key="GridCell.Tab.0.center" timestamp="1651916277689">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648202133920" />
-    <state width="1877" height="213" key="GridCell.Tab.0.left" timestamp="1648202133920">
+    <state width="1373" height="181" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1649324778310" />
+    <state width="1877" height="85" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648893929920" />
+    <state width="1877" height="189" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1649991717186" />
+    <state width="1877" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651916277689" />
+    <state width="1877" height="172" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
+    <state width="1877" height="261" key="GridCell.Tab.0.left" timestamp="1651916277689">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648202133920" />
-    <state width="1877" height="213" key="GridCell.Tab.0.right" timestamp="1648202133920">
+    <state width="1373" height="181" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1649324778310" />
+    <state width="1877" height="85" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648893929920" />
+    <state width="1877" height="189" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1649991717185" />
+    <state width="1877" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651916277689" />
+    <state width="1877" height="172" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
+    <state width="1877" height="261" key="GridCell.Tab.0.right" timestamp="1651916277689">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648202133920" />
+    <state width="1373" height="181" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1649324778310" />
+    <state width="1877" height="85" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648893929920" />
+    <state width="1877" height="189" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1649991717186" />
+    <state width="1877" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651916277689" />
+    <state width="1877" height="172" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1651903049950">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049950" />
+    <state width="1877" height="227" key="GridCell.Tab.1.center" timestamp="1651903049948">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049948" />
+    <state width="1877" height="227" key="GridCell.Tab.1.left" timestamp="1651903049948">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049948" />
+    <state width="1877" height="227" key="GridCell.Tab.1.right" timestamp="1651903049949">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049949" />
+    <state width="1877" height="227" key="GridCell.Tab.2.bottom" timestamp="1651903049952">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049952" />
+    <state width="1877" height="227" key="GridCell.Tab.2.center" timestamp="1651903049951">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049951" />
+    <state width="1877" height="227" key="GridCell.Tab.2.left" timestamp="1651903049950">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049950" />
+    <state width="1877" height="227" key="GridCell.Tab.2.right" timestamp="1651903049951">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="227" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651903049951" />
     <state x="2553" y="480" key="VCS.ChangelistChooser" timestamp="1648170701968">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2553" y="480" key="VCS.ChangelistChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648170701968" />
-    <state x="2364" y="170" key="Vcs.Push.Dialog.v2" timestamp="1648202257292">
+    <state x="2364" y="170" key="Vcs.Push.Dialog.v2" timestamp="1650967042448">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="355" y="135" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648114510490" />
-    <state x="2364" y="170" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648202257292" />
-    <state x="2551" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1648196659056">
+    <state x="355" y="135" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648634679327" />
+    <state x="2364" y="170" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648783707907" />
+    <state x="444" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1649990895614" />
+    <state x="2364" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1650967042448" />
+    <state x="444" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1650018490158" />
+    <state x="631" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1651891715627">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="505" y="284" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648620761713" />
+    <state x="2551" y="358" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1649211363574" />
+    <state x="631" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1651891715627" />
+    <state x="2551" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1650245642054" />
+    <state x="2625" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1651902809241">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="505" y="284" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648169644188" />
-    <state x="2551" y="358" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1648196659056" />
+    <state x="564" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648869460356" />
+    <state x="2625" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1651902809241" />
+    <state x="2459" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1650963919073">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1648779607662" />
+    <state x="2459" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1650963919073" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/backend$Unittests_in_test_case_py.coverage" NAME="Unittests in test_case.py Coverage Results" MODIFIED="1650939344331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case_running_demo" />
+    <SUITE FILE_PATH="coverage/backend$tests__1_.coverage" NAME="tests (1) Coverage Results" MODIFIED="1648630845726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/backend$tests2.coverage" NAME="tests2 Coverage Results" MODIFIED="1649323849337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tasks" />
+    <SUITE FILE_PATH="coverage/backend$tests__2_.coverage" NAME="tests (2) Coverage Results" MODIFIED="1649323792437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tasks" />
     <SUITE FILE_PATH="coverage/backend$tests.coverage" NAME="tests Coverage Results" MODIFIED="1648179462252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/projects" />
   </component>
 </project>

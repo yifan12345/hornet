@@ -25,7 +25,9 @@ class Error:
     CASE_PARAMS_ERROR = {"10053":"请求参数类型错误"}
     CASE_ASSERT_TYPE_ISNONE = {"10054":"不存在的断言类型"}
     CASE_ALREADY_DELETE = {"10055":"case已被删除"}
+    CASE_NOT_EXIST = {"10056":"case不存在"}
 
+    TASK_ALREADY_DELETE = {"10061":"任务已被删除"}
 
 def response(success: bool = True, error=None, item=None) -> dict:
     """
