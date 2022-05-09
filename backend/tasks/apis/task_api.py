@@ -1,12 +1,15 @@
 import os
+from typing import List
 from ninja import Router
 from django.db.utils import IntegrityError
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
+from ninja.pagination import paginate
 from backend.common import response, Error
+from backend.pagination import CustomPagination
 from cases.models import TestCase
 from projects.models import Project
-from tasks.apis.api_scheam import TaskIn
+from tasks.apis.api_scheam import TaskIn, ResultOut
 from tasks.models import TestTask, TaskCaseRelevance,TestResult
 from backend.settings import BASE_DIR
 from tasks.task_running.task_running import Task
@@ -101,13 +104,12 @@ def get_task_delete(request, task_id: int):
     return response()
 
 
-@router.get("/{task_id}/", auth=None,response = List())
-def tasks_result(request, data: TaskIn):
-    """创建任务"""
-    task = get_object_or_404(TestTask, pk=data.project)
-    results = get_object_or_404(TestResult,task=task)
-    result_list = []
-    for result in results:
-        result_list.append(model_to_dict(result))
-
-    return response(item=task_dict)
+@router.get("/{task_id}/results", auth=None, response=List[ResultOut])
+@paginate(CustomPagination)
+def get_task_result(request, task_id: int, **kwargs):
+    """
+    获取任务运行的结果
+    auth=None 该接口不需要认证 cases = [1,2,3]
+    """
+    task = get_object_or_404(TestTask, pk=task_id)
+    return TestResult.objects.filter(task=task).all()

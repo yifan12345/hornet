@@ -13,6 +13,7 @@ class TaskIn(Schema):
 
 
 class ResultOut(Schema):
+    """测试报告返回"""
     name: str
     passed: int
     error: int
@@ -21,8 +22,7 @@ class ResultOut(Schema):
     tests: int
     run_time: float
     result: str
-    create_time: any
-
+    create_time: Any
 
 class TaskOut(Schema):
     """项目出参"""
