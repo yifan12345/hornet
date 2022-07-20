@@ -8,6 +8,8 @@ from cases.apis.module_api import router as module_router
 from cases.apis.testcase_api import router as case_router
 from tasks.apis.task_api import router as tasks_router
 from tasks.apis.report_api import router as report_api
+
+
 class InvalidToken(Exception):
     """
     无效token

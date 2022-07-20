@@ -54,6 +54,7 @@ def user_login(request, payload: LoiginIn):
         return response(error=Error.USER_OR_PAWD_ERROR)
 
 
+
 @router.get("/bearer")
 def bearer(request):
     return {"token": request.auth}

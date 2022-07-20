@@ -96,7 +96,7 @@ def get_task_update(request, task_id: int, payload: TaskIn):
 
 @router.delete("/{task_id}/", auth=None)
 def get_task_delete(request, task_id: int):
-    """删除用例"""
+    """删除任务"""
     task = get_object_or_404(TestTask, id=task_id)
     task.is_delete = True
     task.save()

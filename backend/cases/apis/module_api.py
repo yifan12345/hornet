@@ -97,7 +97,6 @@ def get_module_tree(request, filters: ProjectIn = Query(...)):
     return response(item=data)
 
 
-
 @router.get("/{module_id}/cases", auth=None, response=List[CaseOut])
 @paginate(CustomPagination)
 def get_case_list(request, module_id: int, **kwargs):
