@@ -75,7 +75,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/AnotherFasterRunner-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -273,6 +273,7 @@
       <workItem from="1657894802726" duration="3837000" />
       <workItem from="1658205814658" duration="40000" />
       <workItem from="1658280496170" duration="927000" />
+      <workItem from="1658301046488" duration="751000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1648114507846</created>

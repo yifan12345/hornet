@@ -1,13 +1,14 @@
 <template>
-  <div class="homt">
+  <div class="home">
     <el-card class="box-card">
       <div style="height: 50px; text-align: left; width: 100%">
         <el-button type="primary" @click="showCreate">创建</el-button>
       </div>
-      <div style="height: 400px">
+      <div style="height: 700px">
         <div v-for="o in tableData" :key="o" class="text item">
           <el-col :span="7" class="project-card">
             <el-card style="width: 300px">
+              <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
               <div slot="header" class="clearfix">
                 <span>{{ o.name }}</span>
                 <el-button style="float: right; padding: 3px 0" type="text item"
@@ -30,13 +31,14 @@
         </el-pagination>
       </div>
     </el-card>
-    <projectDialog></projectDialog>
+    <!--引入子组件-->
+    <projectDialog v-if="showDialog"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import projectDialog from "./projectDialog.vue"
+import projectDialog from "@/components/projects/projectDialog.vue"
 import ProjectApi from "../../request/project";
 export default {
   name: "Project",
@@ -57,7 +59,7 @@ export default {
   },
   methods: {
     async initProjectlist() {
-      const resp = await ProjectApi.get_project(this.req);
+      const resp = await ProjectApi.getProjects(this.req);
       if (resp.success === true) {
         this.tableData = resp.items;
         this.total = resp.total;

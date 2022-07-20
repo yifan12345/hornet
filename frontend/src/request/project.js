@@ -1,7 +1,7 @@
 import request from "../HttpCommon.js";
 
 class ProjectApi {
-  get_project(data) {
+  getProjects(data) {
     return request.get("/api/projects/list", data);
   }
 
