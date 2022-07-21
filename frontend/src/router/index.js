@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Navigation from "../views/Navigation.vue";
-import Project from "../components/projects/project_list.vue";
+import Project from "../components/project/project_list.vue";
 
 Vue.use(VueRouter);
 
