@@ -5,17 +5,33 @@
     </div>
     <el-card class="box-card">
       <el-row>
-        <div v-for="o in tableData" :key="o">
+        <div v-for="(item,index) in tableData" :key="index">
           <el-col :span="7" class="project-card">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <span>{{ o.name }} </span>
+                <span>{{ item.name }} </span>
                 <span style="float: right; padding: 3px 0"/>
-                <el-button style="float: right; padding: 3px 0" type="text item"
-                >操作按钮</el-button>
+                <div style="float: right">
+                  <el-dropdown>
+                  <span class="el-dropdown-link">
+                    <i class="el-icon-setting"></i>
+                  </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-menu>
+                        <el-dropdown-item>
+                          <el-button type="text">编辑</el-button>
+                        </el-dropdown-item>
+                        <el-dropdown-item>
+                          <el-button type="text">删除</el-button>
+                        </el-dropdown-item>
+                      </el-dropdown-menu>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </div>
+
               </div>
               <div>
-                {{ o.address }}
+                {{ item.address }}
               </div>
             </el-card>
           </el-col>
@@ -36,7 +52,11 @@
       </el-pagination>
     </div>
     <!--引入子组件-->
-    <projectDialog v-if="djangoFlag" @cancel = "closeDiglog"></projectDialog>
+    <projectDialog
+            v-if="dialogFlag"
+            @cancel = "closeDiglog"
+            :title="dialogTitle"
+    ></projectDialog>
   </div>
 </template>
 
@@ -53,7 +73,8 @@
       return {
         tableData: [],
         total: 50,
-        djangoFlag: false,
+        dialogFlag: false,
+        dialogTitle:"create",
         req: {
           page: 1,
           size: 6,
@@ -75,10 +96,11 @@
         }
       },
       showDialog() {
-        this.djangoFlag = true
+        this.dialogTitle = "create";
+        this.dialogFlag = true;
       },
       closeDiglog(){
-        this.djangoFlag = false
+        this.dialogFlag = false
       },
       //跳转到第几页
       handleCurrentChange(val) {
@@ -86,6 +108,13 @@
         this.req.page = val;
         this.initProjectlist()
       },
+      handleCommand(command) {
+        this.$message('click on item ' + command);
+        if (command === "edit"){
+          this.dialogTitle = "edit";
+          this.dialogFlag = true;
+        }
+      }
     },
   };
 </script>
