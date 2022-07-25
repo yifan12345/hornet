@@ -12,6 +12,10 @@ class ProjectApi {
   createProject(data) {
     return request.post("/api/projects/", data);
   }
+
+  updateProject(id,data) {
+    return request.put("/api/projects/"+id+"/", data);
+  }
 }
 
 export default new ProjectApi();

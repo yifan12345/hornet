@@ -31,7 +31,6 @@ def create_project(request, data: ProjectIn):
 @paginate(CustomPagination)
 def get_project_list(request, **kwargs):
     """获取项目列表"""
-
     return Project.objects.filter(is_delete=False).all()
 
 
@@ -70,7 +69,6 @@ def get_project_delete(request, project_id: int):
     project.save()
 
     return response()
-
 
 
 @router.post("/upload", auth=None)

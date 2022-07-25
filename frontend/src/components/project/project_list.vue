@@ -17,14 +17,12 @@
                     <i class="el-icon-setting"></i>
                   </span>
                     <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-menu>
                         <el-dropdown-item>
-                          <el-button type="text">编辑</el-button>
+                          <el-button type="text" @click="showEdit(item.id)">编辑</el-button>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                          <el-button type="text">删除</el-button>
+                          <el-button type="text" @click="showdel(item.id)">删除</el-button>
                         </el-dropdown-item>
-                      </el-dropdown-menu>
                     </el-dropdown-menu>
                   </el-dropdown>
                 </div>
@@ -56,6 +54,7 @@
             v-if="dialogFlag"
             @cancel = "closeDiglog"
             :title="dialogTitle"
+            :pid = "curretProjectId"
     ></projectDialog>
   </div>
 </template>
@@ -75,6 +74,7 @@
         total: 50,
         dialogFlag: false,
         dialogTitle:"create",
+        curretProjectId:"",
         req: {
           page: 1,
           size: 6,
@@ -95,6 +95,11 @@
           this.$message.error("查询失败")
         }
       },
+      showEdit(id){
+        this.curretProjectId = id
+        this.dialogTitle = "edit"
+        this.dialogFlag = true
+      },
       showDialog() {
         this.dialogTitle = "create";
         this.dialogFlag = true;
@@ -108,13 +113,6 @@
         this.req.page = val;
         this.initProjectlist()
       },
-      handleCommand(command) {
-        this.$message('click on item ' + command);
-        if (command === "edit"){
-          this.dialogTitle = "edit";
-          this.dialogFlag = true;
-        }
-      }
     },
   };
 </script>

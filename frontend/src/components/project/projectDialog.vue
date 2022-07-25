@@ -9,9 +9,6 @@
         <el-form-item label="项目名称" prop="name">
           <el-input v-model="projectForm.name"/>
         </el-form-item>
-<!--        <el-form-item label="项目状态" prop="delivery">-->
-<!--          <el-switch v-model="ruleForm.delivery" style="right: 46%"/>-->
-<!--        </el-form-item>-->
         <el-form-item label="项目描述" prop="desc">
           <el-input type="textarea" v-model="projectForm.describe"/>
         </el-form-item>
@@ -28,7 +25,7 @@
 <!--          </el-upload>-->
 <!--        </el-form-item>-->
         <el-form-item style="text-align: right">
-          <el-button type="primary" @click="submitForm(projectForm)">确 定</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
           <el-button @click="closeDiglog">取消</el-button>
         </el-form-item>
       </el-form>
@@ -37,7 +34,7 @@
 <script>
   import ProjectApi from "../../request/project"
   export default {
-    props:['title'],
+    props:['title','pid'],
     name: "projectDialog",
     data() {
       return {
@@ -61,40 +58,51 @@
         this.showTitle = "创建项目";
       }else if(this.title === "edit"){
         this.showTitle = "编辑项目";
+        this.initProject()
       }
     },
     methods: {
       closeDiglog() {
           this.$emit('cancel', {})
       },
-      // async initProject() {
-      //   const resp = await ProjectApi.getProjects(this.req);
-      //   if (resp.success === true) {
-      //     this.tableData = resp.items;
-      //     this.total = resp.total;
-      //     this.$message.success("查询成功")
-      //   } else {
-      //     this.$message.error("查询失败")
-      //   }
-      // },
+      async initProject() {
+        const resp = await ProjectApi.getProject(this.pid);
+        if (resp.success === true) {
+          this.projectForm = resp.item;
+          this.$message.success("查询成功")
+        } else {
+          this.$message.error("查询失败")
+        }
       },
-          // 创建项目
+      // 创建项目
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            // alert('submit!');
-            ProjectApi.createProject(this.projectForm).then((resp) => {
-              if (resp.success === true) {
-                this.$message.success("创建成功！");
-                this.closeDiglog()
-              } else {
-                this.$message.error(resp.error.message);
-              }
-            });
+            if (this.title === "create") {
+              ProjectApi.createProject(this.projectForm).then((resp) => {
+                if (resp.success === true) {
+                  this.closeDiglog();
+                  this.$message.success("创建成功！")
+                } else {
+                  this.$message.error(resp.error.message)
+                }
+              })
+            } else if (this.title === "edit") {
+              ProjectApi.updateProject(this.pid, this.projectForm).then((resp) => {
+                  if (resp.success === true) {
+                    this.closeDiglog();
+                    this.$message.success("编辑成功！")
+                  } else {
+                    this.$message.error(resp.error.message)
+                  }
+                }
+              )
+            }
           } else {
-            return false;
-          }
-        });
+            return false
+            }
+          });
+        },
       },
     };
 
