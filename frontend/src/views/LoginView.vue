@@ -4,8 +4,13 @@
       <el-card class="box-card">
         <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
           <el-tab-pane label="登录" name="first">
-            <el-form ref="form" :model="form"
-              label-width="80px" label-position="left" :rules="rules">
+            <el-form
+              ref="form"
+              :model="form"
+              label-width="80px"
+              label-position="left"
+              :rules="rules"
+            >
               <el-form-item label="用户名:" prop="username">
                 <el-input v-model="form.username" />
               </el-form-item>
@@ -13,7 +18,9 @@
                 <el-input v-model="form.password" type="password" />
               </el-form-item>
               <el-form-item>
-                <el-button type="primary" @click="onSubmit" style="width: 360px">登录</el-button>
+                <el-button type="primary" @click="onSubmit" style="width: 360px"
+                  >登录</el-button
+                >
               </el-form-item>
             </el-form>
           </el-tab-pane>
@@ -35,7 +42,7 @@ export default {
       form: {
         username: "",
         password: "",
-      },/* eslint-disable */
+      } /* eslint-disable */,
       rules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },

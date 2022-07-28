@@ -22,8 +22,8 @@ def create_module(request, data: ModuleIn):
     module = Module.objects.filter(name=data.name, project_id=data.project_id)
     if len(module) > 0:
         return response(error=Error.MODULE_NAME_EXIST)
-    module = Module.objects.create(**data.dict())
-    return response(item=model_to_dict(module))
+    modules = Module.objects.create(**data.dict())
+    return response(item=model_to_dict(modules))
 
 
 @router.delete("/{module_id}/", auth=None)

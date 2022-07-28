@@ -4,6 +4,8 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Navigation from "../views/Navigation.vue";
 import Project from "../components/project/project_list.vue";
+import caseModule from "../components/case/caseModule.vue";
+
 
 Vue.use(VueRouter);
 
@@ -31,6 +33,15 @@ const routes = [
       {
         path: "project",
         component: Project,
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        // component: () =>
+        //   import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      },
+      {
+        path: "case",
+        component: caseModule,
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.

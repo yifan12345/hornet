@@ -45,9 +45,9 @@
         </el-header>
 
         <el-main style="background-color: #f1f3fa">
-          <!--          <el-card>-->
-          <router-view> </router-view>
-          <!--          </el-card>-->
+          <el-card>
+            <router-view> </router-view>
+          </el-card>
         </el-main>
       </el-container>
     </el-container>

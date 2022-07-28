@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61347fab-892e-4b0e-90b1-82a40559878a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../backend.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/images/4414c173d96eeb45357529422daf9afd.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cases/apis/module_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/cases/apis/module_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/20220325175046.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/20220325175046.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/4414c173d96eeb45357529422daf9afd.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/4414c173d96eeb45357529422daf9afd.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/bd55504db3c7517a8a27c7d7540389c3.jmx" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/bd55504db3c7517a8a27c7d7540389c3.jmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/project/projectDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/project/projectDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/project/project_list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/project/project_list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/request/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/request/project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/views/Navigation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/views/Navigation.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,7 +288,8 @@
       <workItem from="1658280496170" duration="927000" />
       <workItem from="1658301046488" duration="6631000" />
       <workItem from="1658473931558" duration="2659000" />
-      <workItem from="1658711360128" duration="3632000" />
+      <workItem from="1658711360128" duration="13617000" />
+      <workItem from="1658975216832" duration="3207000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1648114507846</created>
@@ -415,29 +426,29 @@
     </state>
     <state x="686" y="215" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1658205852485" />
     <state x="2606" y="215" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1658287177391" />
-    <state width="1387" height="257" key="GridCell.Tab.0.bottom" timestamp="1658484312768">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1387" height="191" key="GridCell.Tab.0.bottom" timestamp="1659002486875">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1387" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1658484312768" />
-    <state width="1387" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1658397959397" />
+    <state width="1387" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1659002486875" />
     <state width="1877" height="172" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
-    <state width="1387" height="257" key="GridCell.Tab.0.center" timestamp="1658484312768">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1387" height="191" key="GridCell.Tab.0.center" timestamp="1659002486875">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1387" height="257" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1658484312768" />
-    <state width="1387" height="257" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1658397959397" />
+    <state width="1387" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1659002486875" />
     <state width="1877" height="172" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
-    <state width="1387" height="257" key="GridCell.Tab.0.left" timestamp="1658484312768">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1387" height="191" key="GridCell.Tab.0.left" timestamp="1659002486874">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1387" height="257" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1658484312768" />
-    <state width="1387" height="257" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1658397959397" />
+    <state width="1387" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1659002486874" />
     <state width="1877" height="172" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
-    <state width="1387" height="257" key="GridCell.Tab.0.right" timestamp="1658484312768">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1387" height="191" key="GridCell.Tab.0.right" timestamp="1659002486875">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1387" height="257" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1658484312768" />
-    <state width="1387" height="257" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1658397959397" />
+    <state width="1387" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1659002486875" />
     <state width="1877" height="172" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1650985873689" />
     <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1651903049950">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -479,11 +490,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2364" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1652063659843" />
-    <state x="631" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1658711361291">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2551" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1658975217049">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="631" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1658711361291" />
-    <state x="2551" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1658473931250" />
+    <state x="2551" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1658975217049" />
     <state x="631" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1657894803656" />
     <state x="2625" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1651902809241">
       <screen x="1920" y="0" width="1920" height="1040" />

@@ -22,9 +22,10 @@ def create_project(request, data: ProjectIn):
     project = Project.objects.filter(name=data.name)
     if len(project) > 0:
         return response(error=Error.PROJECT_NAME_EXIST)
-
-    Project.objects.create(**data.dict())
-    return response()
+    if data.image == "":
+        data.image = "project_default.png"
+    projects = Project.objects.create(**data.dict())
+    return response(item=model_to_dict(projects))
 
 
 @router.get("/list", auth=None,response=List[ProjectOut])

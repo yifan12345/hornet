@@ -1,9 +1,8 @@
 import request from "../HttpCommon.js";
-import axios from "axios";
 
-class ProjectApi {
-  getProjects(data) {
-    return request.get("/api/projects/list", data);
+class ModuleApi {
+  getProModule(data) {
+    return request.get("/api/modules/tree", data);
   }
 
   getProject(id) {
@@ -20,14 +19,6 @@ class ProjectApi {
   updateProject(id, data) {
     return request.put("/api/projects/" + id + "/", data);
   }
-  uploadImage(data) {
-    return axios({
-      method: "post",
-      url: "/api/projects/upload",
-      timeout: 20000,
-      data: data,
-    });
-  }
 }
 
-export default new ProjectApi();
+export default new ModuleApi();
