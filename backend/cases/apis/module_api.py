@@ -35,6 +35,7 @@ def get_module_delete(request, module_id: int):
 
     return response()
 
+
 def node_tree(nodes, current_node):
     """递归，获取子节点"""
     for node in nodes:

@@ -1,3 +1,6 @@
+from django.forms import model_to_dict
+
+
 class Error:
     """
     自定义错误码，错误信息
@@ -29,9 +32,10 @@ class Error:
 
     TASK_ALREADY_DELETE = {"10061":"任务已被删除"}
 
+
 def response(success: bool = True, error=None, item=None) -> dict:
     """
-    定义同一返回格式
+    定义统一返回格式
     """
     if error is None:
         error_code = ""
@@ -41,13 +45,25 @@ def response(success: bool = True, error=None, item=None) -> dict:
         error_code = list(error.keys())[0]
         error_msg = list(error.values())[0]
 
-    resp_dict = {
+    if item is None:
+        item = {}
+
+    resp_data = {
         "success": success,
         "error": {
             "code": error_code,
-            "msg": error_msg,
-        },
-        "item": item
-
+            "msg": error_msg
+        }
     }
-    return resp_dict
+
+    if isinstance(item, dict):
+        resp_data["item"] = item
+    elif isinstance(item, list):
+        resp_data["items"] = item
+    elif isinstance(item, object):
+        item = model_to_dict(item)
+        resp_data["item"] = item
+    else:
+        resp_data["item"] = {}
+
+    return resp_data

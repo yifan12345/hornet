@@ -69,7 +69,7 @@
 
 <script>
     // @ is an alias to /src
-    import projectDialog from "@/components/project/projectDialog.vue";
+    import projectDialog from "./projectDialog.vue";
     import ProjectApi from "../../request/project";
 
     export default {
