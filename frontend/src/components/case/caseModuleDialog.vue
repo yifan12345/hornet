@@ -13,9 +13,12 @@
             class="demo-ruleForm"
     >
       <el-form-item label="项目" prop="name">
-        <el-input v-model="plabel" disabled/>
+        <el-input v-model="proLabel" disabled/>
       </el-form-item>
-      <el-form-item label="名称" prop="desc">
+      <el-form-item label="父节点" v-if = "parentObj.label !==''">
+        <el-input v-model="parentObj.label" disabled/>
+      </el-form-item>
+      <el-form-item label="模块名" prop="desc">
         <el-input v-model="moduleForm.name" />
       </el-form-item>
       <el-form-item style="text-align: right">
@@ -32,7 +35,7 @@
 <script>
   import ModuleApi from "../../request/module";
   export default {
-    props: ["rootId", "pid","plabel"],
+    props: ["rootId", "pid","proLabel","parentObj"],
     name: "projectDialog",
     data() {
       return {
@@ -52,14 +55,13 @@
     mounted() {
       this.moduleForm.project_id = this.pid
       if (this.rootId === true){
-        this.showTitle = "创建根节点"
-      }
-      else if (this.rootId === false){
+        this.showTitle = "创建根节点"}
+      else {
         this.showTitle = "创建子节点"
+        this.moduleForm.parent_id = this.parentObj.id
       }
     },
     methods: {
-
       closeDiglog() {
         this.$emit("cancel", {});
       },
@@ -73,7 +75,7 @@
                 this.closeDiglog();
                 this.$message.success("创建成功！");
               } else {
-                this.$message.error(resp.error.message);
+                this.$message.error(resp.error.msg);
               }
             });
           }

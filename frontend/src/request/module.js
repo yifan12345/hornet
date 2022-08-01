@@ -9,12 +9,12 @@ class ModuleApi {
     return request.post("/api/modules/", data);
   }
 
-  getProject(id) {
-    return request.get("/api/projects/" + id + "/");
+  deleteModules(mid) {
+    return request.get("/api/modules/" + mid + "/");
   }
 
-  delProject(id) {
-    return request.delete("/api/projects/" + id + "/");
+  getModuleCases(mid) {
+    return request.get("/api/modules/" + mid + "/cases");
   }
 
   updateProject(id, data) {

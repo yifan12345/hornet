@@ -1,8 +1,7 @@
 <template>
-
     <div class="case" style="float: left">
         <div style="height: 50px">
-            <div style="float: left;height:30px;line-height:35px;" >
+            <div style="float: left;height:30px;line-height:35px;">
                 <i style="align-content: center">项目：</i>
             </div>
             <div>
@@ -19,30 +18,73 @@
             </div>
         </div>
 
-        <el-card style="width: 300px">
+        <el-card style="width: 29%;float: left">
             <el-button
                     type="text"
                     icon="el-icon-circle-plus-outline"
                     @click="createRootModule"
             >根节点
             </el-button>
-
             <div style="margin-top:6px;">
                 <el-tree
                         :data="moduleDate"
                         show-checkbox
-                        node-key="id"
                         default-expand-all
                         :expand-on-click-node="false"
-                        :render-content="renderContent">
+                        :render-content="renderContent"
+                        @node-click="nodeClick"
+                >
                 </el-tree>
             </div>
         </el-card>
+        <div style="width: 70%;float: right">
+            <el-table
+                    :data="caseData"
+                    border
+                    style="width: 100%">
+                <el-table-column
+                        prop="id"
+                        label="ID"
+                        width="40">
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="名称"
+                        width="120">
+                </el-table-column>
+                <el-table-column
+                        prop="module.name"
+                        label="所属模块"
+                        width="120">
+                </el-table-column>
+                <el-table-column
+                        prop="method"
+                        label="请求类型"
+                        width="80">
+                </el-table-column>
+                <el-table-column
+                        prop="url"
+                        label="URL"
+                        width="220">
+                </el-table-column>
+                <el-table-column
+                        prop="create_time"
+                        label="创建时间"
+                        width="120">
+                </el-table-column>
+                <el-table-column
+                        prop="update_time"
+                        label="更新时间"
+                        width="120">
+                </el-table-column>
+            </el-table>
+        </div>
         <caseModuleDialog
                 v-if="dialogFlag"
-                :rootId = "rootFlag"
+                :rootId="rootFlag"
                 :pid="projectValue"
-                :plabel = "projectLabel"
+                :proLabel="projectLabel"
+                :parentObj="parentObj"
                 @cancel="closeDiglog"
         ></caseModuleDialog>
     </div>
@@ -51,23 +93,22 @@
 </template>
 
 <script>
-    let id = 1000;
     import ProjectApi from "../../request/project";
     import ModuleApi from "../../request/module";
     import caseModuleDialog from "./caseModuleDialog";
 
     export default {
         data() {
-            const data = [];
             return {
-                rootFlag:true,
+                rootFlag: true,
                 dialogFlag: false,
                 moduleDate: [],
                 projectOptions: [],
                 projectValue: 1,
                 projectLabel: "",
+                parentObj: {},
+                caseData: []
 
-                data: JSON.parse(JSON.stringify(data)),
             };
         },
         components: {
@@ -79,17 +120,19 @@
         },
         methods: {
             append(data) {
-                const newChild = {id: id++, label: 'testtest', children: []};
-                if (!data.children) {
-                    this.$set(data, 'children', []);
-                }
-                data.children.push(newChild);
+                this.parentObj = data
+                this.dialogFlag = true
+                this.rootFlag = false
             },
             remove(node, data) {
-                const parent = node.parent;
-                const children = parent.data.children || parent.data;
-                const index = children.findIndex(d => d.id === data.id);
-                children.splice(index, 1);
+                ModuleApi.deleteModules(data.id).then(resp => {
+                    if (resp.success === true) {
+                        this.$message.success("删除成功！");
+                        this.initModulelist(this.projectValue)
+                    } else {
+                        this.$message.error(resp.error.msg);
+                    }
+                })
             },
             renderContent(h, {node, data}) {
                 return (
@@ -120,7 +163,6 @@
                             label: resp.items[i].name,
                         })
                     }
-                    console.log("-------->", this.projectOptions)
                 }
             },
             //修改选中的项目
@@ -128,7 +170,7 @@
                 this.initModulelist(value)
                 this.projectLabel = this.projectOptions.find(item => item.value === value).label;
                 this.projectValue = value
-                console.log("选择项目名称",this.projectLabel)
+
             },
             //查询模块列表
             async initModulelist(pid) {
@@ -136,10 +178,6 @@
                 const resp = await ModuleApi.getProModule(req);
                 if (resp.success === true) {
                     this.moduleDate = resp.items
-
-                    console.log("-------->", resp)
-                    console.log("-------->", this.moduleDate)
-
                 }
             },
             //创建根节点模块
@@ -150,7 +188,23 @@
             //创建模块关闭
             closeDiglog() {
                 this.dialogFlag = false;
+                this.parentObj = {}
                 this.initModulelist(this.projectValue);
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+            nodeClick(data){
+                console.log(data)
+                this.getCaselist(data.id)
+            },
+            //初始化用例列表
+            async getCaselist(mid) {
+                const resp = await ModuleApi.getModuleCases(mid);
+                if (resp.success === true) {
+                    this.caseData = resp.items
+                    this.$message.success("查询成功");
+                }
             },
         },
 
