@@ -1,3 +1,5 @@
+import json
+
 import requests
 from ninja import Router
 from django.forms.models import model_to_dict
@@ -74,6 +76,12 @@ def debug_case(request, data: CaseDebugIn):
     header = data.header
     params_type = data.params_type
     params_body = data.params_body
+
+    header = json.loads(header)
+    params_body = json.loads(params_body)
+
+    print("header_type_____",header,type(header))
+    print("params_body_type_____",params_body,type(params_body))
 
     resp = ""
     if method == "get":

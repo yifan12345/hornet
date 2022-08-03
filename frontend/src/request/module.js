@@ -10,7 +10,7 @@ class ModuleApi {
   }
 
   deleteModules(mid) {
-    return request.get("/api/modules/" + mid + "/");
+    return request.delete("/api/modules/" + mid + "/");
   }
 
   getModuleCases(mid) {

@@ -61,10 +61,10 @@ class CaseIn(Schema):
 class CaseDebugIn(Schema):
     """用例调试入参"""
     url: str
-    method: Method
-    header: dict
-    params_type: ParamsType
-    params_body: dict
+    method: str
+    header: str
+    params_type: str
+    params_body: str
 
 
 class CaseAssertIn(Schema):

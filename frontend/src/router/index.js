@@ -6,7 +6,6 @@ import Navigation from "../views/Navigation.vue";
 import Project from "../components/project/project_list.vue";
 import caseModule from "../components/case/caseModule.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
