@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="61347fab-892e-4b0e-90b1-82a40559878a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cases/apis/api_scheam.py" beforeDir="false" afterPath="$PROJECT_DIR$/cases/apis/api_scheam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cases/apis/testcase_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/cases/apis/testcase_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/project/project_list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/project/project_list.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +278,7 @@
       <workItem from="1658711360128" duration="13617000" />
       <workItem from="1658975216832" duration="3207000" />
       <workItem from="1659056398650" duration="6882000" />
-      <workItem from="1659315873816" duration="10472000" />
+      <workItem from="1659315873816" duration="12903000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1648114507846</created>

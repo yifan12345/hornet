@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Navigation from "../views/Navigation.vue";
 import Project from "../components/project/project_list.vue";
 import caseModule from "../components/case/caseModule.vue";
+import tasks_list from "../components/tasks/tasks_list.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,15 @@ const routes = [
       {
         path: "case",
         component: caseModule,
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        // component: () =>
+        //   import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      },
+      {
+        path: "tasks",
+        component: tasks_list,
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.

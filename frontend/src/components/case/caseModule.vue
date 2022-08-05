@@ -44,14 +44,14 @@
             <span style="float: left">{{ node.label }}</span>
             <span style="float: right">
               <el-button type="text" size="mini" @click="() => append(data)">
-                <i class="el-icon-circle-plus-outline"/>
+                <i class="el-icon-circle-plus-outline" />
               </el-button>
               <el-button
                 type="text"
                 size="mini"
                 @click="() => remove(node, data)"
               >
-                <i class="el-icon-delete"/>
+                <i class="el-icon-delete" />
               </el-button>
             </span>
           </span>
@@ -112,7 +112,7 @@ export default {
       caseTitle: "",
       value: "",
       currentModule: 0,
-      caseId:0
+      caseId: 0,
     };
   },
   components: {

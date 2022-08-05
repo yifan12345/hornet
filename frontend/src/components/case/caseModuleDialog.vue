@@ -65,7 +65,7 @@ export default {
       this.$emit("cancel", {});
     },
 
-    // 创建模块
+    // 创建节点
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
