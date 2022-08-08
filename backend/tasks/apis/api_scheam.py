@@ -2,6 +2,14 @@ from ninja import Schema
 from typing import List, Any
 
 
+class TasksListOut(Schema):
+    id:int
+    name: str
+    describe: str = None
+    create_time: Any
+    update_time: Any
+
+
 class TaskIn(Schema):
     """
     任务入参
@@ -9,7 +17,7 @@ class TaskIn(Schema):
     project: int
     name: str
     describe: str = None
-    case: list
+    cases: list
 
 
 class ResultOut(Schema):
@@ -23,6 +31,7 @@ class ResultOut(Schema):
     run_time: float
     result: str
     create_time: Any
+
 
 class TaskOut(Schema):
     """项目出参"""

@@ -1,6 +1,7 @@
 import os
+import json
 from typing import List
-from ninja import Router
+from ninja import Router, Query
 from django.db.utils import IntegrityError
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
@@ -9,10 +10,11 @@ from backend.common import response, Error
 from backend.pagination import CustomPagination
 from cases.models import TestCase
 from projects.models import Project
-from tasks.apis.api_scheam import TaskIn, ResultOut
+from tasks.apis.api_scheam import TaskIn, ResultOut,TasksListOut
 from tasks.models import TestTask, TaskCaseRelevance,TestResult
 from backend.settings import BASE_DIR
 from tasks.task_running.task_running import Task
+from cases.apis.api_scheam import ProjectIn
 
 TEST_DATA = os.path.join(BASE_DIR, "tasks", "task_running", "test_data.json")
 TEST_CASE = os.path.join(BASE_DIR, "tasks", "task_running", "test_case.py")
@@ -20,22 +22,22 @@ TEST_CASE = os.path.join(BASE_DIR, "tasks", "task_running", "test_case.py")
 router = Router(tags=["tasks"])
 
 
+@router.get("/list", auth=None,response=List[TasksListOut])
+@paginate(CustomPagination)
+def get_tasks_list(request, filters: ProjectIn = Query(...)):
+    """获取任务列表"""
+    return TestTask.objects.filter(project_id=filters.project_id,is_delete=False).all()
+
+
 @router.post("/", auth=None)
 def create_tasks(request, data: TaskIn):
     """创建任务"""
     project = get_object_or_404(Project, pk=data.project)
     task = TestTask.objects.create(project=project, name=data.name, describe=data.describe)
-    cases = []
-    for case in data.case:
-        TaskCaseRelevance.objects.create(task_id=task.id, case_id=case)
-        case = TestCase.objects.get(pk=case)
-        cases.append({
-            "module": case.module_id,
-            "case": case.id
-        })
-
-        task_dict = model_to_dict(task)
-        task_dict["cases"] = cases
+    cases_json = json.dumps(data.cases)
+    TaskCaseRelevance.objects.create(task_id=task.id, cases=cases_json)
+    task_dict = model_to_dict(task)
+    task_dict["cases"] = cases_json
     return response(item=task_dict)
 
 
