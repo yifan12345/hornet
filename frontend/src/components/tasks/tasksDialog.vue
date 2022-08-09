@@ -13,10 +13,10 @@
             class="demo-ruleForm"
     >
       <el-form-item label="名称" prop="name">
-        <el-input v-model="taskForm.name"></el-input>
+        <el-input v-model="taskForm.name"/>
       </el-form-item>
       <el-form-item label="描述">
-        <el-input type="textarea" v-model="taskForm.describe"></el-input>
+        <el-input type="textarea" v-model="taskForm.describe"/>
       </el-form-item>
       <el-form-item>
         <div style="margin-top: 10px">

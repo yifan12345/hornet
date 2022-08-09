@@ -53,18 +53,14 @@ def running(request, task_id: int):
 
 
 @router.get("/{task_id}/", auth=None)
-def get_detail(request, task_id: int):
+def get_task_detail(request, task_id: int):
     """获取任务详情"""
     task = get_object_or_404(TestTask, pk=task_id)
     if task.is_delete is True:
         return response(error=Error.TASK_ALREADY_DELETE)
-    relevance = TaskCaseRelevance.objects.filter(task_id=task_id)
-    case_list = []
-    for r in relevance:
-        print(r.case_id)
-        case_list.append(r.case_id)
+    relevance = TaskCaseRelevance.objects.get(task_id=task_id)
     task_dict = model_to_dict(task)
-    task_dict["cases"] = case_list
+    task_dict["cases"] = json.loads(relevance.cases)
     return response(item=task_dict)
 
 
@@ -72,27 +68,16 @@ def get_detail(request, task_id: int):
 def get_task_update(request, task_id: int, payload: TaskIn):
     """更新任务"""
     task = get_object_or_404(TestTask, id=task_id)
-
     task.name = payload.name
     task.describe = payload.describe
     task.save()
 
-    relevance = TaskCaseRelevance.objects.filter(task_id=task_id)
-    relevance.delete()
-    cases = []
-    for case in payload.case:
-        try:
-            TaskCaseRelevance.objects.create(task_id=task.id, case_id=case)
-        except IntegrityError:
-            return response(error=Error.CASE_NOT_EXIST)
-        case = TestCase.objects.get(pk=case)
-        cases.append({
-            "module": case.module_id,
-            "case": case.id
-        })
+    relevance = TaskCaseRelevance.objects.get(task_id=task_id)
+    relevance.cases = json.dumps(payload.cases)
+    relevance.save()
 
-        task_dict = model_to_dict(task)
-        task_dict["cases"] = cases
+    task_dict = model_to_dict(task)
+    task_dict["cases"] = payload.cases
     return response(item=task_dict)
 
 

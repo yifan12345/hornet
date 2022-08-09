@@ -9,6 +9,7 @@ from tasks.task_running.test_result import save_test_result
 TEST_DATA = os.path.join(BASE_DIR, "tasks", "task_running", "test_data.json")
 TEST_CASE = os.path.join(BASE_DIR, "tasks", "task_running", "test_case.py")
 
+
 class Task:
     def __init__(self,task_id):
         self.task_id = task_id
@@ -16,18 +17,24 @@ class Task:
     def running(self,task_id):
         """运行测试用例"""
         print("1_读取测试用例")
-        relevace = TaskCaseRelevance.objects.filter(task_id=task_id)
+        relevace = TaskCaseRelevance.objects.get(task_id=task_id)
+        case_ids = []
+        relevace_list = json.loads(relevace.cases)
+        for rel in relevace_list:
+            case_ids = case_ids + rel["casesId"]
 
         test_case = {}
-        for rel in relevace:
+        for cases in case_ids:
             try:
-                case = TestCase.objects.get(pk=rel.case_id, is_delete=False)
+                case = TestCase.objects.get(pk=cases, is_delete=False)
                 # ast.literal_eval 转换str为dict
                 # dict_header = ast.literal_eval(case.header)
                 # dict_params_body = ast.literal_eval(case.params_body)
                 params_body = case.params_body.replace("\'", "\"")
-                dict_header = json.loads(case.header)
+                params_header = case.header.replace("\'", "\"")
+
                 dict_params_body = json.loads(params_body)
+                dict_header = json.loads(params_header)
 
                 test_case[case.name] = {
                     "url": case.url,

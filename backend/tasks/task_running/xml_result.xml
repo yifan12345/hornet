@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-	<testsuite name="Mytest-20220507160819" tests="3" file=".py" time="0.896" timestamp="2022-05-07T16:08:20" failures="0" errors="0" skipped="0">
-		<testcase classname="Mytest" name="test_api_1_测试用例" time="0.063" timestamp="2022-05-07T16:08:19" file="tasks\task_running\test_case.py" line="15">
-			<!--test_api_1_测试用例-->
+	<testsuite name="Mytest-20220809180015" tests="4" file=".py" time="3.174" timestamp="2022-08-09T18:00:18" failures="0" errors="0" skipped="0">
+		<testcase classname="Mytest" name="test_api_1_娃娃" time="0.457" timestamp="2022-08-09T18:00:15" file="tasks\task_running\test_case.py" line="15">
+			<doc><![CDATA[test_api_1_娃娃]]></doc>
 		</testcase>
-		<testcase classname="Mytest" name="test_api_2_测试name" time="0.515" timestamp="2022-05-07T16:08:19" file="tasks\task_running\test_case.py" line="15">
-			<!--test_api_2_测试name-->
+		<testcase classname="Mytest" name="test_api_2_你是___啊" time="0.713" timestamp="2022-08-09T18:00:16" file="tasks\task_running\test_case.py" line="15">
+			<doc><![CDATA[test_api_2_你是___啊]]></doc>
 		</testcase>
-		<testcase classname="Mytest" name="test_api_3_测试name2" time="0.317" timestamp="2022-05-07T16:08:20" file="tasks\task_running\test_case.py" line="15">
-			<!--test_api_3_测试name2-->
+		<testcase classname="Mytest" name="test_api_3_测试case" time="1.188" timestamp="2022-08-09T18:00:17" file="tasks\task_running\test_case.py" line="15">
+			<doc><![CDATA[test_api_3_测试case]]></doc>
+		</testcase>
+		<testcase classname="Mytest" name="test_api_4_123123" time="0.817" timestamp="2022-08-09T18:00:18" file="tasks\task_running\test_case.py" line="15">
+			<doc><![CDATA[test_api_4_123123]]></doc>
 		</testcase>
 	</testsuite>
 </testsuites>

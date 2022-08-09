@@ -1,9 +1,9 @@
 <template>
   <div class="tasks">
     <div style="height: 100px; text-align: left; width: 100%">
-      <el-form :inline="true" :model="formInline" class="demo-form-inline">
+      <el-form :inline="true" class="demo-form-inline">
         <el-form-item label="项目列表">
-          <el-select v-model="projectTaskId" placeholder="请选择项目">
+          <el-select v-model="projectTaskId" placeholder="请选择项目" @change="changeProject">
             <el-option
               v-for="item in projectTaskOptions"
               :key="item.value"
@@ -22,17 +22,35 @@
     <div>
       <el-table :data="tableData" border style="width: 100%">
         <el-table-column fixed prop="id" label="ID" width="60"/>
-        <el-table-column prop="name" label="姓名" width="120"/>
-        <el-table-column prop="describe" label="描述" width="500"/>
+        <el-table-column prop="name" label="名称" width="220"/>
+        <el-table-column prop="describe" label="描述" width="400"/>
         <el-table-column prop="create_time" label="创建时间" width="250"/>
         <el-table-column prop="update_time" label="更新时间" width="250"/>
-        <el-table-column label="运行" width="50">
-          <el-button type="text" size="medium" icon="el-icon-stopwatch" />
+        <el-table-column prop="status" label="状态" width="100">
+          <template slot-scope="scope">
+            <div v-if="scope.row.status === 0">
+              <el-tag type="info">未执行</el-tag>
+            </div>
+            <div v-else-if="scope.row.status === 1">
+              <el-tag type="success">执行中</el-tag>
+            </div>
+            <div v-else-if="scope.row.status === 2">
+              <el-tag>已执行</el-tag>
+            </div>
+            <div v-else>
+              <el-tag type="danger">未知状态</el-tag>
+            </div>
+          </template>
+        </el-table-column>
+
+        <el-table-column label="执行" width="50">
+          <el-button @click="runningTasks(scope.row)" type="text" size="medium" icon="el-icon-stopwatch" />
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="250">
           <template slot-scope="scope">
-            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">编辑</el-button>
+            <el-button @click="runningTasks(scope.row)" type="text" size="medium">执行</el-button>
+            <el-button @click="editTasks(scope.row)" type="text" size="small" >编辑</el-button>
+            <el-button @click="deleteTasks(scope.row)" type="text" size="small">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -48,13 +66,7 @@
       >
       </el-pagination>
     </div>
-
-    <tasksDialog
-      v-if="dialogFlag"
-      @cancel="closeDiglog"
-      :title="dialogTitle"
-      :pid="projectTaskId"
-    ></tasksDialog>
+    <tasksDialog v-if="dialogFlag" @cancel="closeDiglog" :title="dialogTitle" :pid="projectTaskId" :tid="taskId"/>
   </div>
 </template>
 
@@ -71,20 +83,14 @@ export default {
   },
   data() {
     return {
-      projectTaskId: "",
+      projectTaskId: 1,
       projectTaskOptions: [],
-      formInline: {
-        user: "",
-        region: "",
-      },
-      projectForm: {
-        id: 1,
-      },
       total: 50,
       dialogFlag: false,
       dialogTitle: "create",
       req: {},
-      tableData: []
+      tableData: [],
+      taskId:"",
     };
   },
   mounted() {
@@ -94,10 +100,10 @@ export default {
     deleteTask(index, rows) {
       rows.splice(index, 1);
     },
+
     onSubmit() {
       console.log("submit!");
     },
-    //初始化任务列表
 
     //初始化项目列表接口
     async initProjectlist() {
@@ -113,35 +119,56 @@ export default {
         this.initTasksList()
       }
     },
+    //初始化任务列表
     async initTasksList() {
-      const req = {project_id:this.projectForm.id}
+      const req = {project_id:this.projectTaskId}
       const resp = await TasksApi.getTasksList(req);
       if (resp.success === true) {
         this.tableData = resp.items
       }
     },
-    showEdit(id) {
-      this.curretProjectId = id;
-      this.dialogTitle = "edit";
-      this.dialogFlag = true;
+    //修改选中的项目
+    changeProject(value) {
+      this.projectTaskId = value;
+      this.initTasksList();
     },
-    async deleteProject(id) {
-      const resp = await ProjectApi.delProject(id);
+    //删除任务
+    async deleteTasks(row) {
+      const resp = await TasksApi.deleteTask(row.id);
       if (resp.success === true) {
-        this.tableData = resp.items;
-        this.total = resp.total;
         this.$message.success("删除成功");
         this.initProjectlist();
       } else {
         this.$message.error("删除失败");
       }
     },
+    //执行任务
+    async runningTasks(row){
+      const resp = await TasksApi.runTasks(row.id);
+      if (resp.success === true) {
+        this.$message.success("执行成功");
+        //this.initProjectlist();
+      } else {
+        this.$message.error("执行失败");
+      }
+    },
+    //创建任务
     createTasks() {
       this.dialogTitle = "create";
       this.dialogFlag = true;
     },
+    //编辑任务
+    editTasks(row){
+      this.dialogTitle = "edit";
+      this.taskId = row.id
+      console.log("taskid-->",this.taskId)
+      this.dialogFlag = true;
+    },
+    //关闭弹窗
     closeDiglog() {
       this.dialogFlag = false;
+      this.initTasksList()
+
     },
     //跳转到第几页
     handleCurrentChange(val) {

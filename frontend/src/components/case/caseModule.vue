@@ -1,31 +1,26 @@
 <template>
-  <div class="case" style="float: left">
-    <div style="height: 50px">
-      <div style="float: left; height: 30px; line-height: 35px">
-        <i style="align-content: center">项目：</i>
-      </div>
-      <div style="float: left">
-        <!--          下拉选择项目-->
-        <el-select
-          v-model="projectValue"
-          placeholder="请选择项目"
-          @change="changeProject"
-        >
-          <el-option
-            v-for="item in projectOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+  <div class="case" >
+    <div style="height: 100px; text-align: left; width: 100%">
+      <el-form :inline="true" :model="formInline" class="demo-form-inline">
+        <el-form-item label="项目列表">
+          <el-select v-model="projectValue" placeholder="请选择项目" @change="changeProject">
+            <el-option
+              v-for="item in projectOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="createCase()" size="medium"
+          >创建</el-button
           >
-          </el-option>
-        </el-select>
-      </div>
-      <el-button @click="createCase()" type="primary" size="medium">
-        创建
-      </el-button>
+        </el-form-item>
+      </el-form>
     </div>
 
-    <el-card style="width: 29%; float: left">
+    <el-card style="width: 20%; float: left">
       <el-button
         type="text"
         icon="el-icon-circle-plus-outline"
@@ -59,7 +54,7 @@
       </div>
     </el-card>
 
-    <div style="width: 70%; float: right">
+    <div style="width: 79%; float: right">
       <el-table :data="caseData" border @row-click="caseRowClick">
         <el-table-column prop="id" label="ID" width="40"> </el-table-column>
         <el-table-column prop="name" label="名称" width="120">
@@ -113,6 +108,10 @@ export default {
       value: "",
       currentModule: 0,
       caseId: 0,
+      formInline: {
+        user: "",
+        region: "",
+      },
     };
   },
   components: {

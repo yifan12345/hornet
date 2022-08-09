@@ -4,6 +4,7 @@ from typing import List, Any
 
 class TasksListOut(Schema):
     id:int
+    status:int
     name: str
     describe: str = None
     create_time: Any
