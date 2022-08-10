@@ -7,18 +7,17 @@ class TasksApi {
   getTasksList(data) {
     return request.get("/api/tasks/list", data);
   }
-  getTaskDetail(tid){
-    return request.get("/api/tasks/"+tid+"/")
+  getTaskDetail(tid) {
+    return request.get("/api/tasks/" + tid + "/");
   }
-  updateTasks(tid,data){
-    return request.put("/api/tasks/"+tid+"/",data)
+  updateTasks(tid, data) {
+    return request.put("/api/tasks/" + tid + "/", data);
   }
-  deleteTask(tid){
-    return request.delete("/api/tasks/"+tid+"/")
+  deleteTask(tid) {
+    return request.delete("/api/tasks/" + tid + "/");
   }
-  runTasks(tid){
-    return request.post("/api/tasks/"+tid+"/running")
-
+  runTasks(tid) {
+    return request.post("/api/tasks/" + tid + "/running");
   }
 }
 

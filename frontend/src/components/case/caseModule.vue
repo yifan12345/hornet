@@ -1,9 +1,13 @@
 <template>
-  <div class="case" >
+  <div class="case">
     <div style="height: 100px; text-align: left; width: 100%">
-      <el-form :inline="true" :model="formInline" class="demo-form-inline">
+      <el-form :inline="true">
         <el-form-item label="项目列表">
-          <el-select v-model="projectValue" placeholder="请选择项目" @change="changeProject">
+          <el-select
+            v-model="projectValue"
+            placeholder="请选择项目"
+            @change="changeProject"
+          >
             <el-option
               v-for="item in projectOptions"
               :key="item.value"
@@ -14,7 +18,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="createCase()" size="medium"
-          >创建</el-button
+            >创建用例</el-button
           >
         </el-form-item>
       </el-form>
@@ -108,10 +112,6 @@ export default {
       value: "",
       currentModule: 0,
       caseId: 0,
-      formInline: {
-        user: "",
-        region: "",
-      },
     };
   },
   components: {

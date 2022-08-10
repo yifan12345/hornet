@@ -3,7 +3,11 @@
     <div style="height: 100px; text-align: left; width: 100%">
       <el-form :inline="true" class="demo-form-inline">
         <el-form-item label="项目列表">
-          <el-select v-model="projectTaskId" placeholder="请选择项目" @change="changeProject">
+          <el-select
+            v-model="projectTaskId"
+            placeholder="请选择项目"
+            @change="changeProject"
+          >
             <el-option
               v-for="item in projectTaskOptions"
               :key="item.value"
@@ -20,12 +24,12 @@
       </el-form>
     </div>
     <div>
-      <el-table :data="tableData" border style="width: 100%">
-        <el-table-column fixed prop="id" label="ID" width="60"/>
-        <el-table-column prop="name" label="名称" width="220"/>
-        <el-table-column prop="describe" label="描述" width="400"/>
-        <el-table-column prop="create_time" label="创建时间" width="250"/>
-        <el-table-column prop="update_time" label="更新时间" width="250"/>
+      <el-table :data="tasksData" border style="width: 100%">
+        <el-table-column fixed prop="id" label="ID" width="60" />
+        <el-table-column prop="name" label="名称" width="220" />
+        <el-table-column prop="describe" label="描述" width="400" />
+        <el-table-column prop="create_time" label="创建时间" width="250" />
+        <el-table-column prop="update_time" label="更新时间" width="250" />
         <el-table-column prop="status" label="状态" width="100">
           <template slot-scope="scope">
             <div v-if="scope.row.status === 0">
@@ -44,29 +48,49 @@
         </el-table-column>
 
         <el-table-column label="执行" width="50">
-          <el-button @click="runningTasks(scope.row)" type="text" size="medium" icon="el-icon-stopwatch" />
+          <el-button
+            @click="runningTasks(scope.row)"
+            type="text"
+            size="medium"
+            icon="el-icon-stopwatch"
+          />
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="250">
           <template slot-scope="scope">
-            <el-button @click="runningTasks(scope.row)" type="text" size="medium">执行</el-button>
-            <el-button @click="editTasks(scope.row)" type="text" size="small" >编辑</el-button>
-            <el-button @click="deleteTasks(scope.row)" type="text" size="small">删除</el-button>
+            <el-button
+              @click="runningTasks(scope.row)"
+              type="text"
+              size="medium"
+              >执行</el-button
+            >
+            <el-button @click="editTasks(scope.row)" type="text" size="small"
+              >编辑</el-button
+            >
+            <el-button @click="deleteTasks(scope.row)" type="text" size="small"
+              >删除</el-button
+            >
           </template>
         </el-table-column>
       </el-table>
     </div>
     <div style="text-align: right">
       <el-pagination
-              cy-data="ProjectPagination"
-              background
-              @current-change="handleCurrentChange"
-              layout="prev, pager, next"
-              :page-size="req.size"
-              :total="total"
+        cy-data="ProjectPagination"
+        background
+        @current-change="handleCurrentChange"
+        layout="prev, pager, next"
+        :page-size="req.size"
+        :total="total"
       >
       </el-pagination>
     </div>
-    <tasksDialog v-if="dialogFlag" @cancel="closeDiglog" :title="dialogTitle" :pid="projectTaskId" :tid="taskId"/>
+    <tasksDialog
+      v-if="dialogFlag"
+      @cancel="closeDiglog"
+      :title="dialogTitle"
+      :pid="projectTaskId"
+      :tid="taskId"
+    />
   </div>
 </template>
 
@@ -89,13 +113,21 @@ export default {
       dialogFlag: false,
       dialogTitle: "create",
       req: {},
-      tableData: [],
-      taskId:"",
+      tasksData: [],
+      taskId: "",
+      taskHeartbeat: null,
     };
   },
   mounted() {
     this.initProjectlist();
+    this.taskHeartbeat = setInterval(() => {
+      this.initTasksList();
+    }, 5000);
   },
+  destroyed() {
+    clearInterval(this.taskHeartbeat);
+  },
+
   methods: {
     deleteTask(index, rows) {
       rows.splice(index, 1);
@@ -116,15 +148,15 @@ export default {
             label: resp.items[i].name,
           });
         }
-        this.initTasksList()
+        this.initTasksList();
       }
     },
     //初始化任务列表
     async initTasksList() {
-      const req = {project_id:this.projectTaskId}
+      const req = { project_id: this.projectTaskId };
       const resp = await TasksApi.getTasksList(req);
       if (resp.success === true) {
-        this.tableData = resp.items
+        this.tasksData = resp.items;
       }
     },
     //修改选中的项目
@@ -143,7 +175,7 @@ export default {
       }
     },
     //执行任务
-    async runningTasks(row){
+    async runningTasks(row) {
       const resp = await TasksApi.runTasks(row.id);
       if (resp.success === true) {
         this.$message.success("执行成功");
@@ -158,17 +190,16 @@ export default {
       this.dialogFlag = true;
     },
     //编辑任务
-    editTasks(row){
+    editTasks(row) {
       this.dialogTitle = "edit";
-      this.taskId = row.id
-      console.log("taskid-->",this.taskId)
+      this.taskId = row.id;
+      console.log("taskid-->", this.taskId);
       this.dialogFlag = true;
     },
     //关闭弹窗
     closeDiglog() {
       this.dialogFlag = false;
-      this.initTasksList()
-
+      this.initTasksList();
     },
     //跳转到第几页
     handleCurrentChange(val) {
