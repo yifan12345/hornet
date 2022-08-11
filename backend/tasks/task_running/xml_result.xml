@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-	<testsuite name="Mytest-20220810153939" tests="4" file=".py" time="5.604" timestamp="2022-08-10T15:39:45" failures="0" errors="0" skipped="0">
-		<testcase classname="Mytest" name="test_api_1_娃娃" time="0.385" timestamp="2022-08-10T15:39:40" file="tasks\task_running\test_case.py" line="15">
+	<testsuite name="Mytest-20220811103927" tests="2" file=".py" time="2.503" timestamp="2022-08-11T10:39:30" failures="0" errors="0" skipped="0">
+		<testcase classname="Mytest" name="test_api_1_娃娃" time="0.502" timestamp="2022-08-11T10:39:28" file="tasks\task_running\test_case.py" line="15">
 			<doc><![CDATA[test_api_1_娃娃]]></doc>
 		</testcase>
-		<testcase classname="Mytest" name="test_api_2_你是___啊" time="1.432" timestamp="2022-08-10T15:39:41" file="tasks\task_running\test_case.py" line="15">
+		<testcase classname="Mytest" name="test_api_2_你是___啊" time="2.001" timestamp="2022-08-11T10:39:30" file="tasks\task_running\test_case.py" line="15">
 			<doc><![CDATA[test_api_2_你是___啊]]></doc>
-		</testcase>
-		<testcase classname="Mytest" name="test_api_3_测试case啊" time="2.169" timestamp="2022-08-10T15:39:43" file="tasks\task_running\test_case.py" line="15">
-			<doc><![CDATA[test_api_3_测试case啊]]></doc>
-		</testcase>
-		<testcase classname="Mytest" name="test_api_4_123123" time="1.619" timestamp="2022-08-10T15:39:45" file="tasks\task_running\test_case.py" line="15">
-			<doc><![CDATA[test_api_4_123123]]></doc>
 		</testcase>
 	</testsuite>
 </testsuites>

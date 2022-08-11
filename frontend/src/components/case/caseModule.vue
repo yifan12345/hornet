@@ -1,8 +1,8 @@
 <template>
   <div class="case">
-    <div style="height: 100px; text-align: left; width: 100%">
+    <div style="height: 100px; width: 100%">
       <el-form :inline="true">
-        <el-form-item label="项目列表">
+        <el-form-item label="项目列表" style="float: left">
           <el-select
             v-model="projectValue"
             placeholder="请选择项目"
@@ -16,7 +16,7 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item>
+        <el-form-item style="float: right">
           <el-button type="primary" @click="createCase()" size="medium"
             >创建用例</el-button
           >
@@ -61,16 +61,16 @@
     <div style="width: 79%; float: right">
       <el-table :data="caseData" border @row-click="caseRowClick">
         <el-table-column prop="id" label="ID" width="40"> </el-table-column>
-        <el-table-column prop="name" label="名称" width="120">
+        <el-table-column prop="name" label="名称" min-width="12%">
         </el-table-column>
-        <el-table-column prop="module.name" label="所属模块" width="120">
+        <el-table-column prop="module.name" label="所属模块" min-width="12%">
         </el-table-column>
-        <el-table-column prop="method" label="请求类型" width="80">
+        <el-table-column prop="method" label="请求类型" min-width="5%">
         </el-table-column>
         <el-table-column prop="url" label="URL" width="220"> </el-table-column>
-        <el-table-column prop="create_time" label="创建时间" width="120">
+        <el-table-column prop="create_time" label="创建时间" min-width="12%">
         </el-table-column>
-        <el-table-column prop="update_time" label="更新时间" width="120">
+        <el-table-column prop="update_time" label="更新时间" min-width="12%">
         </el-table-column>
       </el-table>
     </div>
@@ -154,12 +154,12 @@ export default {
     },
     //修改选中的项目
     changeProject(value) {
-      this.initModulelist(value);
       this.projectLabel = this.projectOptions.find(
         (item) => item.value === value
       ).label;
       this.projectValue = value;
       this.getCaselist();
+      this.initModulelist(value);
     },
     //查询模块列表
     async initModulelist(pid) {
@@ -197,6 +197,7 @@ export default {
     createCase() {
       this.drawer = true;
       this.caseTitle = "创建用例";
+      this.caseId = 0;
     },
     //点击后-title变为查看用例-拉开抽屉
     caseRowClick(row) {

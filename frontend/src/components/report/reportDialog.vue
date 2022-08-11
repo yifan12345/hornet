@@ -12,17 +12,16 @@
       class="demo-ruleForm"
     >
       <el-form-item label="统计">
-        <div id="myChart" :style="{width:'380px',height:'380px'}">
-        </div>
+        <div id="myChart" :style="{ width: '380px', height: '380px' }"></div>
       </el-form-item>
       <el-table :data="reportData" border style="width: 100%">
-        <el-table-column prop="name" label="名称"/>
-        <el-table-column prop="tests" label="总数"/>
-        <el-table-column prop="passed" label="通过"/>
-        <el-table-column prop="error" label="错误"/>
-        <el-table-column prop="failure" label="失败"/>
-        <el-table-column prop="skipped" label="跳过"/>
-        <el-table-column prop="run_time" label="运行时间(S)"/>
+        <el-table-column prop="name" label="名称" />
+        <el-table-column prop="tests" label="总数" />
+        <el-table-column prop="passed" label="通过" />
+        <el-table-column prop="error" label="错误" />
+        <el-table-column prop="failure" label="失败" />
+        <el-table-column prop="skipped" label="跳过" />
+        <el-table-column prop="run_time" label="运行时间(S)" />
       </el-table>
 
       <el-form-item label="详细日志">
@@ -38,11 +37,9 @@
 </template>
 
 <script>
-
-
 import ReportsApi from "../../request/reports";
 
-import * as echarts from 'echarts';
+import * as echarts from "echarts";
 
 export default {
   name: "Dialog",
@@ -51,30 +48,30 @@ export default {
   data() {
     return {
       showTitle: "查看报告",
-      reportData:[],
+      reportData: [],
       dialogVisible: true,
-      detailLog:"",
+      detailLog: "",
       chartOption: {
-        tooltip:{
-          trigger:'item'
+        tooltip: {
+          trigger: "item",
         },
-        legend:{
-          top:'5%',
-          left:'center'
+        legend: {
+          top: "5%",
+          left: "center",
         },
-        series:[
+        series: [
           {
-            name:'Access From',
-            type:'pie',
-            radius:'50%',
-            data:[
-              { value:1,name:'跳过' },
-              { value:1,name:'通过' },
-              { value:1,name:'失败' },
-              { value:1,name:'错误' },
-            ]
-          }
-        ]
+            name: "Access From",
+            type: "pie",
+            radius: "50%",
+            data: [
+              { value: 1, name: "跳过" },
+              { value: 1, name: "通过" },
+              { value: 1, name: "失败" },
+              { value: 1, name: "错误" },
+            ],
+          },
+        ],
       },
       reportForm: {
         project: 0,
@@ -90,9 +87,9 @@ export default {
   },
   mounted() {
     //this.initModuleList()
-    this.$nextTick(() =>{
-      this.initChart()
-    })
+    this.$nextTick(() => {
+      this.initChart();
+    });
   },
   methods: {
     closeDialog() {
@@ -100,23 +97,32 @@ export default {
     },
     // 初始化图表
     async initChart() {
-      var myChart = echarts.init(document.getElementById('myChart'))
-      const resp = await ReportsApi.getReportDetail(this.rid)
-      this.chartOption.series[0].data = []
-      if(resp.success === true){
-        this.reportData.push(resp.item)
-        console.log("resp--->",resp.item)
-        this.chartOption.series[0].data.push({value:resp.item.skipped,name:'跳过'})
-        this.chartOption.series[0].data.push({value:resp.item.passed,name:'通过'})
-        this.chartOption.series[0].data.push({value:resp.item.failure,name:'失败'})
-        this.chartOption.series[0].data.push({value:resp.item.error,name:'错误'})
-        this.detailLog = resp.item.result
-
-
+      var myChart = echarts.init(document.getElementById("myChart"));
+      const resp = await ReportsApi.getReportDetail(this.rid);
+      this.chartOption.series[0].data = [];
+      if (resp.success === true) {
+        this.reportData.push(resp.item);
+        console.log("resp--->", resp.item);
+        this.chartOption.series[0].data.push({
+          value: resp.item.skipped,
+          name: "跳过",
+        });
+        this.chartOption.series[0].data.push({
+          value: resp.item.passed,
+          name: "通过",
+        });
+        this.chartOption.series[0].data.push({
+          value: resp.item.failure,
+          name: "失败",
+        });
+        this.chartOption.series[0].data.push({
+          value: resp.item.error,
+          name: "错误",
+        });
+        this.detailLog = resp.item.result;
       }
-      myChart.setOption(this.chartOption)
+      myChart.setOption(this.chartOption);
     },
-
   },
 };
 </script>

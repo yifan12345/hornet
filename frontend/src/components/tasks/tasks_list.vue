@@ -1,8 +1,8 @@
 <template>
   <div class="tasks">
-    <div style="height: 100px; text-align: left; width: 100%">
+    <div style="height: 100px; width: 100%">
       <el-form :inline="true" class="demo-form-inline">
-        <el-form-item label="项目列表">
+        <el-form-item label="项目列表" style="float: left">
           <el-select
             v-model="projectTaskId"
             placeholder="请选择项目"
@@ -16,9 +16,9 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item>
+        <el-form-item style="float: right">
           <el-button type="primary" @click="createTasks()" size="medium"
-            >创建</el-button
+            >创建任务</el-button
           >
         </el-form-item>
       </el-form>
@@ -47,14 +47,6 @@
           </template>
         </el-table-column>
 
-        <el-table-column label="执行" width="50">
-          <el-button
-            @click="runningTasks(scope.row)"
-            type="text"
-            size="medium"
-            icon="el-icon-stopwatch"
-          />
-        </el-table-column>
         <el-table-column fixed="right" label="操作" width="250">
           <template slot-scope="scope">
             <el-button
@@ -79,7 +71,7 @@
         background
         @current-change="handleCurrentChange"
         layout="prev, pager, next"
-        :page-size="req.size"
+        :page-size="tasksReq.size"
         :total="total"
       >
       </el-pagination>
@@ -107,12 +99,16 @@ export default {
   },
   data() {
     return {
+      tasksReq: {
+        project_id: 1,
+        page: 1,
+        size: 6,
+      },
       projectTaskId: 1,
       projectTaskOptions: [],
       total: 50,
       dialogFlag: false,
       dialogTitle: "create",
-      req: {},
       tasksData: [],
       taskId: "",
       taskHeartbeat: null,
@@ -139,7 +135,7 @@ export default {
 
     //初始化项目列表接口
     async initProjectlist() {
-      const resp = await ProjectApi.getProjects(this.req);
+      const resp = await ProjectApi.getProjects();
       if (resp.success === true) {
         this.projectTaskId = resp.items[0].id;
         for (let i = 0; i < resp.items.length; i++) {
@@ -153,9 +149,11 @@ export default {
     },
     //初始化任务列表
     async initTasksList() {
-      const req = { project_id: this.projectTaskId };
-      const resp = await TasksApi.getTasksList(req);
+      this.tasksReq.project_id = this.projectTaskId;
+      const resp = await TasksApi.getTasksList(this.tasksReq);
       if (resp.success === true) {
+        this.total = resp.total;
+        console.log("total__>", resp);
         this.tasksData = resp.items;
       }
     },
@@ -204,8 +202,8 @@ export default {
     //跳转到第几页
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      this.req.page = val;
-      this.initProjectlist();
+      this.tasksReq.page = val;
+      this.initTasksList();
     },
   },
 };

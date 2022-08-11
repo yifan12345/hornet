@@ -86,7 +86,7 @@
         background
         @current-change="handleCurrentChange"
         layout="prev, pager, next"
-        :page-size="req.size"
+        :page-size="tasksReq.size"
         :total="total"
       >
       </el-pagination>
@@ -113,7 +113,11 @@ export default {
       projectTaskOptions: [],
       total: 50,
       dialogFlag: false,
-      req: {},
+      tasksReq: {
+        project_id: 1,
+        page: 1,
+        size: 6,
+      },
       reportData: [],
       reportId: "",
     };
@@ -124,7 +128,7 @@ export default {
   methods: {
     //初始化项目列表接口
     async initProjectlist() {
-      const resp = await ProjectApi.getProjects(this.req);
+      const resp = await ProjectApi.getProjects();
       if (resp.success === true) {
         this.projectTaskId = resp.items[0].id;
         for (let i = 0; i < resp.items.length; i++) {
@@ -136,19 +140,19 @@ export default {
         this.initReportList();
       }
     },
+    //初始化报告列表
+    async initReportList() {
+      this.tasksReq.project_id = this.projectTaskId;
+      const resp = await ReportsApi.getReportList(this.tasksReq);
+      if (resp.success === true) {
+        this.total = resp.total;
+        this.reportData = resp.items;
+      }
+    },
     //修改选中的项目
     changeProject(value) {
       this.projectTaskId = value;
       this.initReportList();
-    },
-
-    //初始化报告列表
-    async initReportList() {
-      const req = { project_id: this.projectTaskId };
-      const resp = await ReportsApi.getReportList(req);
-      if (resp.success === true) {
-        this.reportData = resp.items;
-      }
     },
     //删除报告
     async deleteTasks(row) {
@@ -173,8 +177,8 @@ export default {
     //跳转到第几页
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      this.req.page = val;
-      this.initProjectlist();
+      this.tasksReq.page = val;
+      this.initReportList();
     },
   },
 };

@@ -19,7 +19,7 @@ class CustomPagination(PaginationBase):
 
     class Input(Schema):
         page: int = Field(1, gt=0)
-        size: int = 6
+        size: int = 20
 
     class Output(Schema):
         success: bool = True
