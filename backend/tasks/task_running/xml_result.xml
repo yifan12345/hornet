@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-	<testsuite name="Mytest-20220811103927" tests="2" file=".py" time="2.503" timestamp="2022-08-11T10:39:30" failures="0" errors="0" skipped="0">
-		<testcase classname="Mytest" name="test_api_1_娃娃" time="0.502" timestamp="2022-08-11T10:39:28" file="tasks\task_running\test_case.py" line="15">
-			<doc><![CDATA[test_api_1_娃娃]]></doc>
-		</testcase>
-		<testcase classname="Mytest" name="test_api_2_你是___啊" time="2.001" timestamp="2022-08-11T10:39:30" file="tasks\task_running\test_case.py" line="15">
-			<doc><![CDATA[test_api_2_你是___啊]]></doc>
+	<testsuite name="Mytest-20220812142747" tests="1" file=".py" time="0.909" timestamp="2022-08-12T14:27:48" failures="0" errors="0" skipped="0">
+		<testcase classname="Mytest" name="test_api_1_123123" time="0.909" timestamp="2022-08-12T14:27:48" file="tasks\task_running\test_case.py" line="15">
+			<doc><![CDATA[test_api_1_123123]]></doc>
 		</testcase>
 	</testsuite>
 </testsuites>

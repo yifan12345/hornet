@@ -61,8 +61,7 @@
       @cancel="closeDiglog"
       :title="dialogTitle"
       :pid="curretProjectId"
-    ></projectDialog>
-  </div>
+    > </projectDialog>
 </template>
 
 <script>

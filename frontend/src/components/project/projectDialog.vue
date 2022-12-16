@@ -65,6 +65,7 @@ export default {
     };
   },
   mounted() {
+
     if (this.title === "create") {
       this.showTitle = "创建项目";
     } else if (this.title === "edit") {

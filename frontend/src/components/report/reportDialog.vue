@@ -97,6 +97,7 @@ export default {
     },
     // 初始化图表
     async initChart() {
+
       var myChart = echarts.init(document.getElementById("myChart"));
       const resp = await ReportsApi.getReportDetail(this.rid);
       this.chartOption.series[0].data = [];

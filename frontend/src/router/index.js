@@ -34,29 +34,14 @@ const routes = [
       {
         path: "project",
         component: Project,
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        // component: () =>
-        //   import(/* webpackChunkName: "about" */ "../views/About.vue"),
       },
       {
         path: "case",
         component: caseModule,
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        // component: () =>
-        //   import(/* webpackChunkName: "about" */ "../views/About.vue"),
       },
       {
         path: "tasks",
         component: tasks_list,
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        // component: () =>
-        //   import(/* webpackChunkName: "about" */ "../views/About.vue"),
       },
       {
         path: "report",
